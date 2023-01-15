@@ -30,6 +30,7 @@ import (
 	// We support MySQL (preferred) and Sqlite3.
 	// New dialects need to be added to openDB() as well.
 	"gorm.io/driver/mysql"
+	"gorm.io/driver/postgres"
 	"gorm.io/driver/sqlite"
 
 	// Allow for "cloudsql" type connections that support workload identity.
@@ -49,6 +50,7 @@ import (
 const (
 	sqliteDriver = "sqlite3"
 	mysqlDriver  = "mysql"
+	pgsqlDriver  = "postgres"
 
 	gormStmtStartTimeKey             = "buildbuddy:op_start_time"
 	gormRecordOpStartTimeCallbackKey = "buildbuddy:record_op_start_time"
@@ -387,6 +389,8 @@ func openDB(fileResolver fs.FS, dataSource string, advancedConfig *AdvancedConfi
 		// Newer versions of GORM use a smaller default size (191) to account for InnoDB index limits
 		// that don't apply to modern MysQL installations.
 		dialector = mysql.New(mysql.Config{Conn: db, DefaultStringSize: 255})
+	case pgsqlDialect:
+		dialector = postgres.New(postgres.Config{DSN: connString})
 	default:
 		return nil, "", fmt.Errorf("unsupported database driver %s", ds.DriverName())
 	}

@@ -5559,6 +5559,12 @@ def install_buildbuddy_dependencies(workspace_name = "buildbuddy"):
         version = "v1.3.4",
     )
     go_repository(
+        name = "io_gorm_driver_postgres",
+        importpath = "gorm.io/driver/postgres",
+        sum = "h1:2k0EYyqii7sfWVM7yomw6a82Jt5wjuQUpWmD6fI9fGI=",
+        version = "v1.2.0",
+    )
+    go_repository(
         name = "io_gorm_driver_sqlite",
         importpath = "gorm.io/driver/sqlite",
         sum = "h1:Fi8xNYCUplOqWiPa3/GuCeowRNBRGTf62DEmhMDHeQQ=",

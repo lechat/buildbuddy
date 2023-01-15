@@ -21,6 +21,7 @@ go_library(
         "@com_github_mattn_go_sqlite3//:go-sqlite3",
         "@com_github_prometheus_client_golang//prometheus",
         "@io_gorm_driver_mysql//:mysql",
+        "@io_gorm_driver_postgres//:postgres",
         "@io_gorm_driver_sqlite//:sqlite",
         "@io_gorm_gorm//:gorm",
         "@io_gorm_gorm//logger",
